@@ -12,11 +12,16 @@ class Bot:
         ) # You can set parse_mode by default. HTML or MARKDOWN
 
 		#using the wrapping logic:
-		self.send_welcome = self.bot.message_handler(commands=['start', 'help'])(self.send_welcome)
+		self.respond_welcome = self.bot.message_handler(commands=['start', 'help'])(self.respond_welcome)
+		self.respond_text = self.bot.message_handler(func=lambda message: True)(self.respond_text)
 		
 	# @bot.message_handler(commands=['start', 'help']) ==> no longer used
-	def send_welcome(message):
-		bot.reply_to(message, "Howdy, how are you doing?")
+	def respond_welcome(self, message):
+		print(dir(message))
+		self.bot.reply_to(message, "Howdy, how are you doing?")
+	
+	def respond_text(self, message):
+		self.bot.send_message(message.chat.id, 'hiiiii!!')
 	
 	def run (self):
 		logger.info('Running bot...')
