@@ -1,2 +1,2 @@
-# stranger_connect_bot
+# Stranger Connect Telegram Bot
 Connect two people anonymously 
